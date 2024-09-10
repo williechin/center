@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>진단1</title>
+<style>body {
+            font-family: Arial, sans-serif;
+            background-color: #a8dadc;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 60%;
+            margin: auto;
+            background: #f1faee;
+            padding: 20px;
+            margin-top: 50px;
+            box-shadow: 0 0 10px #1d3557;
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #1d3557;
+        }
+        p {
+            text-align: center;
+            color: #457b9d;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #1d3557;
+            border-radius: 4px;
+        }
+        textarea {
+            resize: vertical;
+            height: 100px;
+            width: 100%;
+        }
+        .form-group-inline {
+            display: flex;
+            justify-content: space-between;
+        }
+        .form-group-inline .form-group {
+            flex: 1;
+            margin-right: 10px;
+        }
+        .form-group-inline .form-group:last-child {
+            margin-right: 0;
+        }
+        .submit-btn {
+            display: block;
+            width: 30%;
+            padding: 15px;
+            background: #e63946;
+            color: #f1faee;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background: #457b9d;
+        }
+        .progress {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .progress-bar {
+            width: 25%;
+            height: 20px;
+            background: #457b9d;
+            border-radius: 4px;
+        }
+        .privacy-notice {
+            font-size: 12px;
+            color: #457b9d;
+            text-align: center;
+            margin-top: 20px;
+        }</style>
+</head>
+<body>
+<div class="container">
+  <h1>팀 기본 정보 입력</h1>
+  <p>이 정보는 더 정확한 진단 결과를 제공하는 데 사용됩니다.</p>
+  <p>입력하신 정보는 팀의 건강 진단 목적으로만 사용되며, 외부에 공개되지 않습니다.</p>
+  <form>
+    <div class="form-group" style="margin-right: 20px;">
+      <label for="team-name">팀명 (닉네임 가능):</label> 
+      <input id="team-name" name="team-name" type="text" placeholder="팀을 대표할 수 있는 이름을 자유롭게 입력해 주세요.">
+    </div>
+    <div class="form-group">
+      <label for="industry">산업군:</label>
+      <select id="industry" name="industry">
+        <option value="IT">IT</option>
+        <option value="Manufacturing">제조업</option>
+        <option value="Service">서비스업</option>
+        <option value="Finance">금융업</option>
+        <option value="Education">교육</option>
+        <option value="Medical">의료</option>
+        <option value="Other">기타</option>
+      </select>
+      <input id="other-industry" style="display: none; margin-top: 10px;" name="other-industry" type="text" placeholder="기타 산업군 입력">
+    </div>
+    <div class="form-group">
+      <label for="team-size">팀 규모:</label>
+      <select id="team-size" name="team-size">
+        <option value="1-5">5명 이하</option>
+        <option value="6-10">6-10명</option>
+        <option value="11-20">11-20명</option>
+        <option value="21-50">21-50명</option>
+        <option value="51-100">51-100명</option>
+        <option value="100+">100명 이상</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="team-goals">팀의 역할:</label> 
+      <textarea id="team-goals" name="team-goals" placeholder="팀의 주요 프로덕트(상품)나 서비스, 하는 일을 중심으로 설명해주세요."></textarea>
+    </div>
+    <div class="form-group">
+      <label for="team-current-status">팀의 상황:</label> 
+      <textarea id="team-current-status" name="team-current-status" placeholder="팀의 현재 상황이나 환경에 대해 설명해 주세요."></textarea>
+    </div>
+    <div class="form-group">
+      <label for="team-strengths">팀의 장단점:</label> 
+      <textarea id="team-strengths" name="team-strengths" placeholder="팀이 가지고 있는 장점과 단점에 대해 이야기 해주세요."></textarea>
+    </div>
+    <div class="progress">
+      <div class="progress-bar">&nbsp;</div>
+      <p>1/4 단계</p>
+    </div>
+    <button class="submit-btn" type="submit">다음 단계로</button>
+  </form>
+</div>
+<script src="team-info-handler.js"></script>
+</body>

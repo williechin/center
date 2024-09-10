@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>진단3</title>
+<style>body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #1d3557;
+            background-color: #a8dadc;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #003459;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #1d3557;
+        }
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #003459;
+            border-radius: 4px;
+            background-color: #f1faee;
+            color: #1d3557;
+        }
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+        .submit-btn {
+            display: block;
+            width: 30%;
+            padding: 15px;
+            background-color: #e63946;
+            color: #f1faee;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .submit-btn:hover {
+            background-color: #007EA7;
+        }
+        .progress {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .progress-bar {
+            width: 75%;
+            height: 20px;
+            background-color: #007EA7;
+            border-radius: 4px;
+        }
+        .rating {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            width: 50%;
+        }
+        .rating input[type="radio"] {
+            display: none;
+        }
+        .rating label {
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            background-color: #f1faee;
+            border: 2px solid #003459;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #003459;
+            font-weight: bold;
+        }
+        .rating input[type="radio"]:checked + label {
+            background-color: #003459;
+            color: #f1faee;
+        }</style>
+</head>
+<body>
+  <h1>체계 정보 입력</h1>
+  <p style="color: #457b9d;">팀이 일하는 방식에 대해 질문과 수준에 답해주세요.</p>
+  <form>
+    <div class="form-group">
+      <label for="reporting">보고와 의사결정</label> 
+      <textarea id="reporting" name="reporting" placeholder="팀원이 보고하고 리더가 의사결정하는 방식에 대해 설명해주시고, 그 수준을 5점 만점으로 평가해주세요."></textarea>
+      <div class="rating">
+        <input id="reporting1" name="reporting_rating" type="radio" value="1"> 
+        <label for="reporting1">1</label> 
+        <input id="reporting2" name="reporting_rating" type="radio" value="2"> 
+        <label for="reporting2">2</label> 
+        <input id="reporting3" name="reporting_rating" type="radio" value="3"> 
+        <label for="reporting3">3</label> 
+        <input id="reporting4" name="reporting_rating" type="radio" value="4"> 
+        <label for="reporting4">4</label> 
+        <input id="reporting5" name="reporting_rating" type="radio" value="5"> 
+        <label for="reporting5">5</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="workflow">규정과 프로세스</label> 
+      <textarea id="workflow" name="workflow" placeholder="업무에 관한 규정과 프로세스가 있는지 설명해주시고, 그 수준을 5점 만점으로 평가해주세요."></textarea>
+      <div class="rating">
+        <input id="workflow1" name="workflow_rating" type="radio" value="1"> 
+        <label for="workflow1">1</label> 
+        <input id="workflow2" name="workflow_rating" type="radio" value="2"> 
+        <label for="workflow2">2</label> 
+        <input id="workflow3" name="workflow_rating" type="radio" value="3"> 
+        <label for="workflow3">3</label> 
+        <input id="workflow4" name="workflow_rating" type="radio" value="4"> 
+        <label for="workflow4">4</label> 
+        <input id="workflow5" name="workflow_rating" type="radio" value="5"> 
+        <label for="workflow5">5</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="communication">소통과 협업</label> 
+      <textarea id="communication" name="communication" placeholder="팀 내 소통과 협업이 잘 되는지 설명해주시고, 그 수준을 5점 만점으로 평가해주세요."></textarea>
+      <div class="rating">
+        <input id="communication1" name="communication_rating" type="radio" value="1"> 
+        <label for="communication1">1</label> 
+        <input id="communication2" name="communication_rating" type="radio" value="2"> 
+        <label for="communication2">2</label> 
+        <input id="communication3" name="communication_rating" type="radio" value="3"> 
+        <label for="communication3">3</label> 
+        <input id="communication4" name="communication_rating" type="radio" value="4"> 
+        <label for="communication4">4</label> 
+        <input id="communication5" name="communication_rating" type="radio" value="5"> 
+        <label for="communication5">5</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="evaluation">평가와 보상</label> 
+      <textarea id="evaluation" name="evaluation" placeholder="업무 수행에 대한 평가와 보상이 잘 이루어지는지 설명해주시고, 그 수준을 5점 만점으로 평가해주세요."></textarea>
+      <div class="rating">
+        <input id="evaluation1" name="evaluation_rating" type="radio" value="1"> 
+        <label for="evaluation1">1</label> 
+        <input id="evaluation2" name="evaluation_rating" type="radio" value="2"> 
+        <label for="evaluation2">2</label> 
+        <input id="evaluation3" name="evaluation_rating" type="radio" value="3"> 
+        <label for="evaluation3">3</label> 
+        <input id="evaluation4" name="evaluation_rating" type="radio" value="4"> 
+        <label for="evaluation4">4</label> 
+        <input id="evaluation5" name="evaluation_rating" type="radio" value="5"> 
+        <label for="evaluation5">5</label>
+      </div>
+    </div>
+    <div class="progress">
+      <div class="progress-bar">&nbsp;</div>
+      <p style="color: #1d3557;">3/4 단계</p>
+    </div>
+    <button class="submit-btn" type="submit">다음 단계로</button>
+    <a href="조직진단_진단2_외과진단.html" class="cta-button">이전 단계로</a>
+  </form>
+  <script src="내과 입력 내용.js"></script>
+</body>

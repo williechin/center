@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>진단2</title>
+<style>body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #1d3557;
+        background-color: #a8dadc;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    h1 {
+        text-align: center;
+        color: #1d3557;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #1d3557;
+    }
+    input[type="text"],
+    textarea,
+    select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #1d3557;
+        border-radius: 4px;
+        background-color: #f1faee;
+        color: #1d3557;
+        box-sizing: border-box;
+    }
+    textarea {
+        resize: vertical;
+        height: 100px;
+    }
+    .submit-btn {
+        display: block;
+        width: 30%;
+        padding: 15px;
+        background-color: #e63946;
+        color: #f1faee;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    .submit-btn:hover {
+        background-color: #457b9d;
+    }
+    .progress {
+        margin: 20px 0;
+        text-align: center;
+    }
+    .progress-bar {
+        width: 50%;
+        height: 20px;
+        background-color: #457b9d;
+        border-radius: 4px;
+    }
+    .task-group {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    .task-group input[type="text"] {
+        flex-grow: 1;
+        margin-right: 10px;
+    }
+    .remove-task-btn {
+        background-color: #e63946;
+        color: #f1faee;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 12px;
+        line-height: 12px;
+        text-align: center;
+    }
+    .remove-task-btn:hover {
+        background-color: #d62828;
+    }
+    .add-task-btn {
+        margin-top: 10px;
+        background-color: #1d3557;
+        color: #f1faee;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .add-task-btn:hover {
+        background-color: #457b9d;
+    }
+    .rating-label {
+        display: inline-block;
+        width: 40px;
+        text-align: center;
+        position: relative;
+    }
+    .rating-label input[type="radio"] {
+        position: absolute;
+        top: -2px;
+        left: 50%;
+        transform: translateX(-50%);
+    }</style>
+
+</head>
+<body>
+  <h1>구조 정보 입력</h1>
+  <p style="color: #1d3557;">팀의 업무, 담당, 리더 구조에 대한 질문에 답해주세요.</p>
+  <form>
+    <div class="form-group">
+      <label for="team-tasks">주요 업무</label>
+      <div id="task-list">
+        <div class="task-group">
+          <input id="task-1" name="task-1" type="text" placeholder="업무를 입력하세요"> 
+          <button class="remove-task-btn" type="button">X</button>
+        </div>
+        <div class="task-group">
+          <input id="task-2" name="task-2" type="text" placeholder="업무를 입력하세요"> 
+          <button class="remove-task-btn" type="button">X</button>
+        </div>
+        <div class="task-group">
+          <input id="task-3" name="task-3" type="text" placeholder="업무를 입력하세요"> 
+          <button class="remove-task-btn" type="button">X</button>
+        </div>
+      </div>
+      <button class="add-task-btn" type="button" onclick="addTask()">업무 추가</button>
+    </div>
+  <script>
+    let taskCount = 3;
+
+    function addTask() {
+      taskCount++;
+      const taskList = document.getElementById('task-list');
+      const newTaskGroup = document.createElement('div');
+      newTaskGroup.className = 'task-group';
+      newTaskGroup.innerHTML = `
+        <input id="task-${taskCount}" name="task-${taskCount}" type="text" placeholder="업무를 입력하세요"> 
+        <button class="remove-task-btn" type="button" onclick="removeTask(this)">X</button>
+      `;
+      taskList.appendChild(newTaskGroup);
+    }
+
+    function removeTask(button) {
+      const taskGroup = button.parentElement;
+      taskGroup.remove();
+    }
+  </script>
+    <div class="form-group">
+      <label for="team-formation">업무 담당 </label> 
+      <textarea id="team-formation" name="team-formation" placeholder="위의 주요 업무에 대한 담당이 누구 혹은 어떤 조직이 맡고 있나요? 겹치거나 공백이 있다면 모두 적어주세요. 그리고 아래 업무 담당에 대한 전체적인 수준을 5점 만점으로 평가해주세요."></textarea> 
+      <label>담당 전체 수준 (5점 만점):</label>
+      <div>
+        <label class="rating-label" for="rating-1">1점</label> 
+        <input id="rating-1" name="team-formation-rating" type="radio" value="1"> 
+        <label class="rating-label" for="rating-2">2점</label> 
+        <input id="rating-2" name="team-formation-rating" type="radio" value="2"> 
+        <label class="rating-label" for="rating-3">3점</label> 
+        <input id="rating-3" name="team-formation-rating" type="radio" value="3"> 
+        <label class="rating-label" for="rating-4">4점</label> 
+        <input id="rating-4" name="team-formation-rating" type="radio" value="4"> 
+        <label class="rating-label" for="rating-5">5점</label> 
+        <input id="rating-5" name="team-formation-rating" type="radio" value="5">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="team-leadership">팀 리더</label> 
+      <input id="team-leader" name="team-leader" type="text" placeholder="리더의 이름을 입력하세요"> 
+      <label for="leader-style">리더 스타일</label>
+      <select id="leader-style" name="leader-style">
+        <option value="공격형">공격형</option>
+        <option value="수비형">수비형</option>
+        <option value="밸런스형">밸런스형</option>
+        <option value="변화형">변화형</option>
+        <option value="안정형">안정형</option>
+      </select>
+      <label>리더십 평가 (5점 만점):</label>
+      <div>
+        <label class="rating-label" for="leadership-rating-1">1점</label> 
+        <input id="leadership-rating-1" name="leadership-rating" type="radio" value="1"> 
+        <label class="rating-label" for="leadership-rating-2">2점</label> 
+        <input id="leadership-rating-2" name="leadership-rating" type="radio" value="2"> 
+        <label class="rating-label" for="leadership-rating-3">3점</label> 
+        <input id="leadership-rating-3" name="leadership-rating" type="radio" value="3"> 
+        <label class="rating-label" for="leadership-rating-4">4점</label> 
+        <input id="leadership-rating-4" name="leadership-rating" type="radio" value="4"> 
+        <label class="rating-label" for="leadership-rating-5">5점</label> 
+        <input id="leadership-rating-5" name="leadership-rating" type="radio" value="5">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="team-gap">리더십에 대해 이야기 해주세요.</label> 
+      <textarea id="team-gap" name="team-gap" placeholder="리더의 스타일과 평가에 대해 추가 설명해주세요."></textarea>
+    </div>
+    <div class="progress">
+      <div class="progress-bar">&nbsp;</div>
+      <p style="color: #1d3557;">2/4 단계</p>
+    </div>
+    <button class="submit-btn" type="submit">다음 단계로</button>
+    <a href="조직진단_진단1_팀정보입력.html" class="cta-button">이전 단계로</a>
+  </form>
+  <script src="외과 입력 내용.js"></script>
+</body>

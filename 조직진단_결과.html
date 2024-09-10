@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>팀 정보 종합</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #a8dadc;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 60%;
+            margin: auto;
+            background: #f1faee;
+            padding: 20px;
+            margin-top: 50px;
+            box-shadow: 0 0 10px #1d3557;
+            border-radius: 8px;
+        }
+        h2 {
+            color: #1d3557;
+            text-align: center;
+        }
+        .nav {
+            padding-left: 50%;
+            display: flexbox;
+            margin-right: 15px;
+            align-items: center;
+        }
+        .nav a {
+            color: #1d3557;
+            margin-right: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .nav .search {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+        }
+        .nav input[type="text"] {
+            padding: 5px;
+            border: 1px solid #1d3557;
+            border-radius: 4px;
+        }
+        .nav button {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .analysis {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #ffffff;
+            border-radius: 4px;
+        }
+        .submit-btn1 {
+            display: block;
+            width: 30%;
+            padding: 10px;
+            background-color: #457b9d;
+            color: #ffffff;
+            text-align: center;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+        .submit-btn {
+            display: block;
+            width: 30%;
+            padding: 10px;
+            background-color: #ffffff;
+            text-align: center;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+        .footer {
+            margin-top: 30px;
+            width: 100%;
+            background-color: #a8dadc;
+            color: #1d3557;
+            text-align: center;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+        .logo-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .logo {
+            width: 100px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="조직진단_홈페이지.html">아워팀진단</a> 
+        <a href="조직진단_센터소개.html">센터소개</a> 
+        <a href="#">FnA</a> 
+        <a href="#">정보들</a>
+        <div class="search">
+          <input type="text" placeholder="Search"> 
+          <button>
+            <img src="search-icon.png" alt="Search" width="20" height="20">
+          </button>
+        </div>
+      </nav>    
+    <div class="container">
+        <h2>팀 기본 정보</h2>
+        <div id="team-info" class="analysis">
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const teamInfo = JSON.parse(localStorage.getItem('teamInfo'));
+                    
+                    if (teamInfo) {
+                        const teamInfoHtml = `
+                            <p><strong>팀명:</strong> ${teamInfo.teamName}</p>
+                            <p><strong>산업군:</strong> ${teamInfo.industry}</p>
+                            <p><strong>팀 규모:</strong> ${teamInfo.teamSize}</p>
+                            <p><strong>팀의 목표:</strong> ${teamInfo.teamGoals}</p>
+                            <p><strong>팀의 상황:</strong> ${teamInfo.teamCurrentStatus}</p>
+                            <p><strong>팀의 장단점:</strong> ${teamInfo.teamStrengths}</p>
+                        `;
+
+                        const diagnosisTime = `<p>답변 : ${teamInfo.diagnosisDateTime}</p>`
+                        document.getElementById('team-info').innerHTML = teamInfoHtml;
+                        document.getElementById('diagnosis-datetime').innerHTML = diagnosisTime;
+                    } else {
+                        document.getElementById('team-info').innerHTML = '<p>팀 정보를 찾을 수 없습니다.</p>';
+                    }
+                });
+            </script>
+
+        </div>
+        <div id="diagnosis-datetime" class="analysis">  
+    </div>
+
+        <h2>구조 정보</h2>
+        <div id="surgical-analysis" class="analysis">
+            <div class="formation-container">
+                <div id="leader-name" class="leader"></div>
+                <div id="team-score" class="team-score"></div>
+                <img class="formation-field" src="field.png" alt="Formation Field">
+                <div id="positions-container"></div>
+            </div>
+            <div id="team-gap" class="analysis"></div>
+        </div>
+
+        <h2>체계 정보</h2>
+        <div id="internal-analysis" class="analysis"></div>
+
+        <h2>문화 정보</h2>
+        <div id="psychiatric-analysis" class="analysis"></div>
+
+        <a href="조직진단_진단1_팀정보입력.html" class="submit-btn1" id="reset-btn">다시 진단하기</a>
+        <a href="#" onclick="submitToCenter()" class="submit-btn">센터에 최종 제출</a>
+        <a href="조직진단_진단4_정신과진단.html" class="cta-button">이전 단계로</a>
+    </div>
+
+    <div class="footer">
+        <p><strong>건강한 조직을 위한 최고의 선택</strong></p>
+        <p><strong>아워팀건강센터로 연락주세요.</strong></p>
+        <div class="logo-container">
+            <img class="logo" src="아워팀건강센터LOGO.png" alt="아워팀">
+            <p><strong>e-mail : wjcin26@gmail.com</strong></p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const teamStructureInfo = JSON.parse(localStorage.getItem('teamStructureInfo'));
+            const internalDiagnosis = JSON.parse(localStorage.getItem('internalDiagnosis'));
+            const psychiatricDiagnosis = JSON.parse(localStorage.getItem('psychiatricDiagnosis'));
+            const resetButton = document.getElementById('reset-btn');
+
+            resetButton.addEventListener('click', function(e) {
+                // 모든 localStorage 데이터 삭제
+                localStorage.clear();
+            });
+
+                if (teamStructureInfo) {
+                document.getElementById('leader-name').textContent = `리더: ${teamStructureInfo.teamLeader} (${teamStructureInfo.leaderStyle}, ${teamStructureInfo.leadershipRating} / 5)`;
+                document.getElementById('team-score').textContent = `담당 점수: ${teamStructureInfo.teamFormationRating} / 5`;
+
+                const positionsContainer = document.getElementById('positions-container');
+                teamStructureInfo.tasks.forEach((task, index) => {
+                    if (task) {
+                        const position = document.createElement('div');
+                        position.className = 'position';
+                        position.textContent = task;
+                        position.style.top = `${20 + (index % 3) * 20}%`;
+                        position.style.left = `${25 + (index % 2) * 50}%`;
+                        positionsContainer.appendChild(position);
+                    }
+                });
+
+                document.getElementById('team-gap').innerHTML = `<h4>리더십 상태:</h4><p>${teamStructureInfo.teamGap}</p>`;
+            } else {
+                document.getElementById('surgical-analysis').innerHTML = '<p>구조 정보를 찾을 수 없습니다.</p>';
+            }
+
+            if (internalDiagnosis) {
+                const analysisDiv = document.getElementById('internal-analysis');
+                const diagnosisItems = [
+                    { key: 'reporting', title: '보고와 의사결정' },
+                    { key: 'workflow', title: '규정과 프로세스' },
+                    { key: 'communication', title: '소통과 협업' },
+                    { key: 'evaluation', title: '평가와 보상' }
+                ];
+
+                diagnosisItems.forEach(item => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'diagnosis-item';
+                    itemDiv.innerHTML = `
+                        <h3>${item.title} <span class="rating">${internalDiagnosis[item.key].rating}/5</span></h3>
+                        <p>${internalDiagnosis[item.key].description}</p>
+                    `;
+                    analysisDiv.appendChild(itemDiv);
+                });
+
+                const dateDiv = document.createElement('div');
+                dateDiv.innerHTML = `<p>답변: ${internalDiagnosis.diagnosisDateTime}</p>`;
+                analysisDiv.appendChild(dateDiv);
+            } else {
+                document.getElementById('internal-analysis').innerHTML = '<p>체계 정보를 찾을 수 없습니다.</p>';
+            }
+
+            if (psychiatricDiagnosis) {
+                const analysisDiv = document.getElementById('psychiatric-analysis');
+                analysisDiv.innerHTML = `
+                    <div class="diagnosis-item">
+                        <p><strong>팀의 MBTI : <span class="mbti-type">${psychiatricDiagnosis.teamMbti}</span></strong></p>
+                        <p><strong>이유 : </strong> ${psychiatricDiagnosis.mbtiReason}</p>
+                    </div>
+                    <div class="diagnosis-item">
+                        <p><strong>조직 분위기 :</strong> ${psychiatricDiagnosis.teamAtmosphere}</p>
+                        ${psychiatricDiagnosis.atmosphereOther ? `<p><strong>기타 설명:</strong> ${psychiatricDiagnosis.atmosphereOther}</p>` : ''}
+                        <p><strong>이유 :</strong> ${psychiatricDiagnosis.atmosphereReason}</p>
+                    </div>
+                    <div class="diagnosis-item">
+                        <p><strong> 팀의 꿈(Vision) :</strong> ${psychiatricDiagnosis.teamVision}</p>
+                    </div>
+                    <div class="diagnosis-item">
+                       <p><strong>팀의 소명 : </strong>${psychiatricDiagnosis.teamMission}</p>
+                    </div>
+                    <div class="diagnosis-item">
+                       <p><strong>팀 마인드 : </strong>${psychiatricDiagnosis.missionMindset}</p>
+                    </div>
+                    <br></br>
+                    <div>
+                        <p>답변: ${psychiatricDiagnosis.diagnosisDateTime}</p>
+                    </div>
+                `;
+            } else {
+                document.getElementById('psychiatric-analysis').innerHTML = '<p>문화 정보를 찾을 수 없습니다.</p>';
+            }
+        });
+
+        function submitToCenter() {
+            console.log('센터제출 클릭');
+            const email = "wjcin26@gmail.com";
+            const subject = "팀 정보 종합 보고서";
+            const teamInfo = document.getElementById('team-info').textContent;
+            const surgicalAnalysis = document.getElementById('surgical-analysis').textContent;
+            const internalAnalysis = document.getElementById('internal-analysis').textContent;
+            const psychiatricAnalysis = document.getElementById('psychiatric-analysis').textContent;
+
+            const emailBody = `
+                팀 기본 정보:\n\n${teamInfo}\n\n
+                구조 정보:\n\n${surgicalAnalysis}\n\n
+                체계 정보:\n\n${internalAnalysis}\n\n
+                문화 정보:\n\n${psychiatricAnalysis}
+            `;
+
+            fetch('send_email.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `subject=${encodeURIComponent(subject)}&emailBody=${encodeURIComponent(emailBody)}`
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log('응답: ', data);
+                alert('이메일이 성공적으로 전송되었습니다.');
+            })
+            .catch(error => {
+                console.error('에러:', error);
+                alert('이메일 전송에 실패했습니다.');
+            });
+
+        }
+    </script>
+</body>
+</html>
