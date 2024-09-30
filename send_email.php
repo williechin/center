@@ -35,7 +35,7 @@ try {
     $mail->Port = 465;                                    // TCP port to connect to
 
     //Recipients
-    $mail->setFrom('wjchin@naver.com', '아워팀건강센터');
+    $mail->setFrom('teamhealthcenter@gmail.com', '아워팀건강센터');
     $mail->addAddress('wjcin26@gmail.com');     // Add a recipient
 
     //Content
