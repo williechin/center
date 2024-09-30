@@ -23,15 +23,15 @@ $mail->ContentType = 'text/html';
 $mail->CharSet = 'utf-8';                            // Passing `true` enables exceptions
 try {
     $mail->isSMTP();                                      // Set mailer to use SMTP
-    $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+    $mail->Host = 'smtp.naver.com';  // Specify main and backup SMTP servers
     $mail->SMTPAuth = true;                               // Enable SMTP authentication
-    $mail->Username = 'leaderteamhr';                 // SMTP username
-    $mail->Password = '트 l x 아 푸 드 c 티 c c 스 디 v c';                           // SMTP password
+    $mail->Username = 'wjchin';                 // SMTP username
+    $mail->Password = 'JYJ5CDHGWTY5';                           // SMTP password
     $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
     $mail->Port = 465;                                    // TCP port to connect to
 
     //Recipients
-    $mail->setFrom('leaderteamhr@gmail.com', '아워팀건강센터');
+    $mail->setFrom('wjchin@naver.com', '아워팀건강센터');
     $mail->addAddress('wjcin26@gmail.com');     // Add a recipient
 
     //Content
