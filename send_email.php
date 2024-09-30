@@ -27,10 +27,10 @@ $mail->ContentType = 'text/html';
 $mail->CharSet = 'utf-8';                            // Passing `true` enables exceptions
 try {
     $mail->isSMTP();                                      // Set mailer to use SMTP
-    $mail->Host = 'smtp.naver.com';  // Specify main and backup SMTP servers
+    $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
     $mail->SMTPAuth = true;                               // Enable SMTP authentication
-    $mail->Username = 'wjchin';                 // SMTP username
-    $mail->Password = 'JYJ5CDHGWTY5';                           // SMTP password
+    $mail->Username = 'teamhealthcenter';                 // SMTP username
+    $mail->Password = 'qdrhexccfzpctfid';                           // SMTP password
     $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
     $mail->Port = 465;                                    // TCP port to connect to
 
