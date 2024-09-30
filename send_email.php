@@ -8,6 +8,9 @@ require "/assets/vendor/phpmailer/PHPMailer.php";
 require "/assets/vendor/phpmailer/SMTP.php";
 require "/assets/vendor/phpmailer/Exception.php";
 
+include "PHPMailer.php";
+include "SMTP.php";
+
 $ajax = true;
 $honeypot = '';
 
