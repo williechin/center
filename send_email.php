@@ -29,7 +29,7 @@ try {
     $mail->isSMTP();                                      // Set mailer to use SMTP
     $mail->Host = 'smtp.naver.com';  // Specify main and backup SMTP servers
     $mail->SMTPAuth = true;                               // Enable SMTP authentication
-    $mail->Username = 'teamhealthcenter';                 // SMTP username
+    $mail->Username = 'teamhealthcenter@naver.com';                 // SMTP username
     $mail->Password = 'DJWQG2W1ZLWV';                           // SMTP password
     $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
     $mail->Port = 465;                                    // TCP port to connect to
